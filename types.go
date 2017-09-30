@@ -8,6 +8,10 @@ type TL interface {
 
 const crc_vector = 0x1cb5c415 // Processed manually
 
+type TL_INT struct {
+	Value uint32
+}
+
 const crc_msg_container = 0x73f1f8dc
 
 type TL_msg_container struct {

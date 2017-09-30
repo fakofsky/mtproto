@@ -30,6 +30,22 @@ func (e TL_true) encode() []byte {
 	return x.buf
 }
 
+// Encoding TL_INT
+func (e TL_INT) encode() []byte {
+	x := NewEncodeBuf(512)
+	//x.UInt(ct)
+	return x.buf
+}
+
+type TL_vector []TL
+
+// Encoding TL_vector
+func (e TL_vector) encode() []byte {
+	x := NewEncodeBuf(512)
+	x.Vector(e)
+	return x.buf
+}
+
 // error#c4b9f9bb code:int text:string = Error;
 
 const crc_error = 0xc4b9f9bb
@@ -21210,8 +21226,9 @@ func (m *DecodeBuf) ObjectGenerated(constructor uint32) (r TL) {
 			Debug: m.Object(),
 		}
 	default:
-		m.err = fmt.Errorf("Unknown constructor: %x", constructor)
-		return nil
+		r = TL_INT{
+			Value: constructor,
+		}
 	}
 	return
 }
