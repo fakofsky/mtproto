@@ -12,6 +12,20 @@ func (m *MTProto) MessagesGetHistory(peer TL, offsetId, offsetDate, addOffset, l
 	})
 }
 
+func (m *MTProto) MessagesGetMessagesViews(peer TL,id []int32, incr TL) (*TL, error) {
+	return m.InvokeSync(TL_messages_getMessagesViews{
+		Peer: peer,
+		Id: id,
+		Increment: incr,
+	})
+}
+
+func (m *MTProto) MessagesGetAllChats(except_ids []int32) (*TL, error) {
+	return m.InvokeSync(TL_messages_getAllChats{
+		Except_ids: except_ids,
+	})
+}
+
 func (m *MTProto) MessagesGetDialogs(excludePinned bool, offsetDate, offsetId int32, offsetPeer TL, limit int32) (*TL, error) {
 	return m.InvokeSync(TL_messages_getDialogs{
 		Exclude_pinned: excludePinned,
