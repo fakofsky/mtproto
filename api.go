@@ -15785,6 +15785,9 @@ func (m *DecodeBuf) ObjectGenerated(constructor uint32) (r TL) {
 		r = TL_boolTrue{}
 	case crc_true:
 		r = TL_true{}
+	case crc_vector:
+		m.off -= 4
+		r = TL_vector(m.Vector())
 	case crc_error:
 		r = TL_error{
 			Code: m.Int(),
