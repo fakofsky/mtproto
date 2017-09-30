@@ -1,6 +1,6 @@
 package mtproto
 
-import "fmt"
+//import "fmt"
 
 // boolFalse#bc799737 = Bool;
 
