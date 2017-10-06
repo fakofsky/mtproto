@@ -20,6 +20,13 @@ func (m *MTProto) MessagesGetMessagesViews(peer TL,id []int32, incr TL) (*TL, er
 	})
 }
 
+func (m *MTProto) ChannelsGetMessages(channel TL,id []int32) (*TL, error) {
+	return m.InvokeSync(TL_channels_getMessages{
+		Channel: channel,
+		Id: id,
+	})
+}
+
 func (m *MTProto) MessagesGetAllChats(except_ids []int32) (*TL, error) {
 	return m.InvokeSync(TL_messages_getAllChats{
 		Except_ids: except_ids,
