@@ -57,3 +57,16 @@ func (m *MTProto) MessagesSendMessage(no_webpage, silent, background, clear_draf
 		Entities:        entities,
 	})
 }
+
+func (m *MTProto) MessagesForwardMessages(flags int32,silent bool, background bool,with_my_score bool, from_peer TL, id []int32, random_id []int64, to_peer TL) (*TL,error) {
+	return m.InvokeSync(TL_messages_forwardMessages{
+		Flags: flags,
+		Silent: silent,
+		Background: background,
+		With_my_score: with_my_score,
+		From_peer: from_peer,
+		Id: id,
+		Random_id: random_id,
+		To_peer: to_peer,
+	})
+}
