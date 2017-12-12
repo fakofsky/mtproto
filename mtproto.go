@@ -316,7 +316,7 @@ func (m *MTProto) readRoutine() {
 				// Connection closed by server, trying to reconnect
 				err = m.reconnect(m.addr)
 				if err != nil {
-					log.Fatalln("ReadRoutine: ", err)
+					log.Fatalln("ReadRoutine recconect error: ", err)
 				}
 			}
 			if err != nil {
